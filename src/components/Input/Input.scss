@@ -1,0 +1,31 @@
+@use '../../colors.scss';
+
+.validated-input {
+    display: flex;
+    flex-direction: column;
+    
+    background-color: colors.$primary;
+    padding: 3px;
+    border-radius: 5px;
+
+    transition: 0.5s;
+
+    width: 200px;
+
+    &__input {
+        border: 0;
+        border-bottom: 2px solid colors.$primary-active;
+        outline: 0;
+        background: 0;
+        font: inherit;
+        color: inherit;
+    }
+
+    &__label {
+        color: colors.$error-primary;
+    }
+    
+    &_incorrect {
+        box-shadow: 0 0 8px colors.$error-primary;
+    }
+}

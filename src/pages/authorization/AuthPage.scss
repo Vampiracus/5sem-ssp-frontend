@@ -1,0 +1,17 @@
+.authorization {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.welcome-page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &__button {
+        font-weight: 800;
+        font-size: 2rem;
+        padding: 50px;
+    }
+}
