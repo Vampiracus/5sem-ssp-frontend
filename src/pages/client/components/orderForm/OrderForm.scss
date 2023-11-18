@@ -1,0 +1,9 @@
+@use '../../../../colors.scss';
+
+.order-form {
+    border-radius: 8px;
+
+    & > .new-item-form {
+        margin-top: 10px;
+    }
+}

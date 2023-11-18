@@ -10,11 +10,12 @@ type Props = {
   setValue: (newVal: string) => void,
   isIncorrect?: boolean,
   autoFocus?: boolean,
-  type?: string
+  type?: string,
+  className?: string
 }
 
 const Input: React.FC<Props>
-= ({ validationFunction, prefix, name, setValue, isIncorrect, ...props }) => {
+= ({ validationFunction, prefix, name, setValue, isIncorrect, className, ...props }) => {
     const id = prefix + '-' + name + 'input';
     const [validationText, setValidationText] = useState('');
   
@@ -37,8 +38,9 @@ const Input: React.FC<Props>
             <label htmlFor={'#' + id} className='validated-input__label'>
                 {validationText}
             </label>
-            <input className='validated-input__input' id={id} name={name} onChange={clickHandler} 
-                placeholder={name} {...props}/>
+            <input className={
+                'validated-input__input ' + (className ? className : '')
+            } id={id} name={name} onChange={clickHandler} placeholder={name} {...props}/>
         </div>
     );
 };

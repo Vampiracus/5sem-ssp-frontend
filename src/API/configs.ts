@@ -10,6 +10,7 @@ export const baseConfig: {
 
 export const getConfig = Object.assign({ method: 'get' }, baseConfig);
 export const postConfig = Object.assign({ method: 'post' }, baseConfig);
+export const deleteConfig = Object.assign({ method: 'delete' }, baseConfig);
 
 export function withBody(config: Record<string, unknown>, body: string) {
     return Object.assign({ body }, config);

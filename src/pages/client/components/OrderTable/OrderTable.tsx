@@ -3,10 +3,17 @@ import './OrderTable.scss';
 import OrderItem from './OrderItem/OrderItem';
 
 type Props = {
-    orders: Order[]
+    orders: Order[],
+    setSelectedOrder: (o: Order) => void
+    setIsOrderSelected: (o: boolean) => void
+    createdOrders: number
+    setCreatedOrders: (n: number) => void
 }
 
-const OrderTable: React.FC<Props> = ({ orders }) => {
+const OrderTable: React.FC<Props> = ({
+    orders, setSelectedOrder,
+    setIsOrderSelected, createdOrders, setCreatedOrders,
+}) => {
     return (
         <div className='order-table'>
             <OrderItem order={{
@@ -22,6 +29,10 @@ const OrderTable: React.FC<Props> = ({ orders }) => {
                     isFirst={false}
                     isLast={index === orders.length - 1}
                     key={order.id}
+                    setSelectedOrder={setSelectedOrder}
+                    setIsOrderSelected={setIsOrderSelected}
+                    setCreatedOrders={setCreatedOrders}
+                    createdOrders={createdOrders}
                 />
             ))}
         </div>

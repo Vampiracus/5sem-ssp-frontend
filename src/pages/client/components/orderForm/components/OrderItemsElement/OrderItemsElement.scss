@@ -1,6 +1,7 @@
-@use '../../../../../colors.scss';
+@use '../../../../../../colors.scss';
 
-.order-item {
+.order-item-element {
+    background-color: colors.$primary;
     display: flex;
     border: 1px solid colors.$primary-active;
 
@@ -15,13 +16,14 @@
         &_right {
             border-right: none;
         }
-
+        
         &__delete-button {
             width: 14px;
             height: 15px;
             border-radius: 50%;
             background-color: colors.$error-primary;
             font-size: smaller;
+            cursor: pointer;
 
             &:hover {
                 background-color: colors.$error-primary-hover;
@@ -32,7 +34,6 @@
 
     &_first {
         background-color: colors.$primary-hover;
-        cursor: default;
         border-top-right-radius: 8px;
         border-top-left-radius: 8px;
     }
@@ -40,13 +41,5 @@
         border-bottom-right-radius: 8px;
         border-bottom-left-radius: 8px;
     }
-
-    cursor: pointer;
-
-    &:hover {
-        background-color: colors.$primary-hover;
-    }
-    &:active {
-        background-color: colors.$primary-active;
-    }
+    cursor: default;
 }

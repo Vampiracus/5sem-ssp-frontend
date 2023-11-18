@@ -29,9 +29,9 @@ declare global {
     }
 
     type OrderItem = {
-        id: 'NULL',
+        id: 'NULL' | number,
         product_count: number,
-        order_id: 'NULL',
+        order_id: 'NULL' | number,
         product_id: number
     }
 }
