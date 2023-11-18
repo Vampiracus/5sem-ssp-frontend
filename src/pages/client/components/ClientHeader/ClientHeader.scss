@@ -1,0 +1,9 @@
+.client-header {
+    display: flex;
+    justify-content: space-between;
+
+    &__add-new-button {
+        flex: 0;
+        margin: 10px 0;
+    }
+}

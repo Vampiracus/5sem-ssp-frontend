@@ -11,7 +11,7 @@ import { login as doLogin, getCurrentUser } from '../../API/user';
 
 type Props = {
     isForClient: boolean
-    user: User | null
+    user: User | null | true
     setUser: (user: User) => void
 }
 
@@ -48,7 +48,7 @@ const AuthPage: React.FC<Props> = ({ isForClient, user, setUser }) => {
         };
     });
 
-    if (user) {
+    if (user && user !== true) {
         return (
             <Navigate to={'/' + user.userType}/>
         );

@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import './AuthPage.scss';
 import Container from '../../components/Container/Container';
 
-const WelcomePage = () => {
+const WelcomePage: React.FC<{user: User | null | true}> = ({ user }) => {
+    if (user && user !== true) return <Navigate to={user.userType}/>;
+
     return (
         <Container class='welcome-page'>
             <Link to='/login/client'>

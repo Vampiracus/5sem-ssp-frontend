@@ -1,0 +1,34 @@
+@use './../../colors.scss';
+
+
+.popup-content {
+    position: fixed;
+    inset: 0;
+    display: none !important;
+    z-index: 8100;
+
+    &_active {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0 0 0 / 40%);
+    }
+
+    &__content {
+        padding: 25px;
+        background-color: colors.$primary-background;
+        border-radius: 12px;
+        min-width: 260px;
+        max-height: 80%;
+        overflow-y: scroll;
+        
+        &::-webkit-scrollbar {
+            width: 5px;
+
+            &-thumb {
+                background-color: rgba(0 0 0 / 40%);
+                border-radius: 5px;
+            }
+        }
+    }
+}

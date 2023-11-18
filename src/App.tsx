@@ -6,7 +6,7 @@ import WelcomePage from './pages/authorization/WelcomePage';
 import { getCurrentUser } from './API/user';
 
 function App() {
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<User | null | true>(true);
     
 
     useEffect(() => {
@@ -17,11 +17,11 @@ function App() {
 
     return (
         <Routes>
+            <Route path='/' element={<WelcomePage user={user}/>} />
             <Route path='/login/client'
                 element={<AuthPage user={user} setUser={setUser} isForClient/>} />
             <Route path='/login/manager'
                 element={<AuthPage user={user} setUser={setUser} isForClient={false}/>} />
-            <Route path='/login' element={<WelcomePage />} />
             <Route path='/client' element={<ClientPage user={user}/>} />
             <Route path='*' element={<div />} />
         </Routes>

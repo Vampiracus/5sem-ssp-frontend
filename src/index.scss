@@ -11,6 +11,7 @@ body {
     align-items: center;
 
     min-width: 300px;
+    margin: 0;
 }
 
 h3 {
@@ -20,4 +21,9 @@ h3 {
 a {
     font: inherit;
     color:inherit;
+}
+
+#root {
+    min-width: 100vw;
+    min-height: 100vh;
 }
