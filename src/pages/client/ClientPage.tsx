@@ -7,12 +7,15 @@ import Container from '../../components/Container/Container';
 import OrderTable from './components/OrderTable/OrderTable';
 import ClientHeader from './components/ClientHeader/ClientHeader';
 import OrderForm from './components/orderForm/OrderForm';
+import Button from '../../components/Button/Button';
+import { logout } from '../../API/user';
 
 type Props = {
     user: User | null | true
+    setUser: (u: User) => void
 }
 
-const ClientPage: React.FC<Props> = ({ user }) => {
+const ClientPage: React.FC<Props> = ({ user, setUser }) => {
     const [orders, setOrders] = React.useState<Order[]>([]);
     const [selectedOrder, setSelectedOrder] = React.useState<null | Order>(null);
     const [isOrderSelected, setIsOrderSelected] = React.useState<boolean>(false);
@@ -44,6 +47,12 @@ const ClientPage: React.FC<Props> = ({ user }) => {
                 active={isOrderSelected}
                 setActive={setIsOrderSelected}
             />
+            <Button className='client-page__logout-button' onClick={() => {
+                logout()
+                    .then(() => setUser(null));
+            }}>
+                Выйти из аккаунта
+            </Button>
         </Container>
     );
 };

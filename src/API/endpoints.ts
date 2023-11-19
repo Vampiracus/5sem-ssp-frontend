@@ -10,3 +10,4 @@ export const baseOrderURL = baseURL + '/order/';
 
 export const loginClientURL = baseURL + '/login/client';
 export const loginManagerURL = baseURL + '/login/manager';
+export const logoutURL = baseURL + '/logout';

@@ -1,9 +1,15 @@
+@use '../../colors.scss';
+
 .client-page {
     &__outer {
         position: fixed;
         inset: 0;
     }
     border-radius: 6px;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     
     overflow-y: scroll;
         
@@ -18,4 +24,15 @@
 
     max-height: 90vh;
     min-width: 600px;
+
+    &__logout-button {
+        width: 80px;
+        align-self: flex-end;
+        background-color: colors.$error-primary;
+        border: colors.$error-primary-hover;
+
+        &:hover, &:active {
+            background-color: colors.$error-primary-hover;
+        }
+    }
 }

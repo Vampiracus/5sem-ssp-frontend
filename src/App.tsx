@@ -4,6 +4,7 @@ import AuthPage from './pages/authorization/AuthPage';
 import ClientPage from './pages/client/ClientPage';
 import WelcomePage from './pages/authorization/WelcomePage';
 import { getCurrentUser } from './API/user';
+import ManagerPage from './pages/manager/ManagerPage';
 
 function App() {
     const [user, setUser] = useState<User | null | true>(true);
@@ -22,7 +23,8 @@ function App() {
                 element={<AuthPage user={user} setUser={setUser} isForClient/>} />
             <Route path='/login/manager'
                 element={<AuthPage user={user} setUser={setUser} isForClient={false}/>} />
-            <Route path='/client' element={<ClientPage user={user}/>} />
+            <Route path='/client' element={<ClientPage user={user} setUser={setUser}/>} />
+            <Route path='/manager' element={<ManagerPage user={user}/>} />
             <Route path='*' element={<div />} />
         </Routes>
     );
