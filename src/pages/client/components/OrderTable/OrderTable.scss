@@ -1,8 +1,5 @@
-@use '../../../../colors.scss';
-
 .order-table {
     display: flex;
     flex-direction: column;
-    background-color: colors.$primary;
     border-radius: 8px;
 }

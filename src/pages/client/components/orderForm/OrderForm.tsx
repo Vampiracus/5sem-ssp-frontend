@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import PopupContent from '../../../../components/PopupContent/PopupContent';
-import OrderItemsElement from './components/OrderItemsElement/OrderItemsElement';
 import './OrderForm.scss';
 import NewItemForm from './components/NewItemForm/NewItemForm';
-import { getOrderItems } from '../../../../API/orders';
+import { deleteOrderItem, getOrderItems } from '../../../../API/orders';
+import TableItem from '../../../../components/TableItem/TableItem';
 
 type Props = {
     order: Order | null
@@ -12,6 +12,7 @@ type Props = {
 }
 
 const OrderForm: React.FC<Props> = ({ order, active, setActive }) => {
+    const canchange = order?.status === 'created' || order?.status === 'waiting for changes';
     const [items, setItems] = React.useState<OrderItem[]>([]);
     const [createdNewItems, setCreatedNewItems] = React.useState(0);
     
@@ -28,24 +29,25 @@ const OrderForm: React.FC<Props> = ({ order, active, setActive }) => {
     return (
         <PopupContent active={active} setActive={setActive}>
             <div className='order-form'>
-                <OrderItemsElement item={{
-                    product_id: 'Номер товара',
-                    product_count: 'Количество товара',
+                <TableItem item={{
                     id: 'ID',
-                    order_id: 'NULL',
-                } as unknown as OrderItem} isFirst/>
+                    product_count: 'Количество товара',
+                    order_id: 'Номер заказа',
+                    product_id: 'Номер товара',
+                }} isFirst/>
                 {items.map((item, index) => (
-                    <OrderItemsElement 
+                    <TableItem 
+                        key={index}
                         item={item}
                         isFirst={false}
                         isLast={index === items.length - 1}
-                        key={index}
-                        setCreatedNewItems={setCreatedNewItems}
-                        createdNewItems={createdNewItems}
+                        setCreatedItems={setCreatedNewItems}
+                        createdItems={createdNewItems}
+                        deleteFunction={canchange ? deleteOrderItem : undefined}
                     />
                 ))}
                 {
-                    order?.status === 'created' || order?.status === 'waiting for changes'
+                    canchange
                         ? <NewItemForm
                             order_id={order ? order.id : 0}
                             setCreatedNewItems={setCreatedNewItems}

@@ -1,8 +1,9 @@
-@use '../../../../../colors.scss';
+@use '../../colors.scss';
 
-.order-item {
+.table-item {
     display: flex;
     border: 1px solid colors.$primary-active;
+    background-color: colors.$primary;
 
     &__micro {
         padding: 5px;

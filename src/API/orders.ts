@@ -39,8 +39,8 @@ export async function postOrderItem(orderId: number, productId: number, productC
     }
 }
 
-export async function deleteOrderItem(item_id: number) {
-    const res = await fetch(baseOrderItemURL + item_id, deleteConfig);
+export async function deleteOrderItem(item: OrderItem) {
+    const res = await fetch(baseOrderItemURL + item.id, deleteConfig);
     try {
         const result = await res.text();
         return result;
@@ -66,8 +66,8 @@ export async function postOrder(login: string) {
     }
 }
 
-export async function deleteOrder(order_id: number) {
-    const res = await fetch(baseOrderURL + order_id, deleteConfig);
+export async function deleteOrder(order: Order) {
+    const res = await fetch(baseOrderURL + order.id, deleteConfig);
     try {
         const result = await res.text();
         return result;

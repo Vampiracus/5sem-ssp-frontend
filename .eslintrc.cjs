@@ -66,6 +66,7 @@ module.exports = {
     "no-var": "error",
 
 
-    "@typescript-eslint/type-annotation-spacing": "error"
+    "@typescript-eslint/type-annotation-spacing": "error",
+    "@typescript-eslint/no-explicit-any": "off"
 }
 }

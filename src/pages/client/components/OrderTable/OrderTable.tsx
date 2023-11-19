@@ -1,6 +1,7 @@
 import React from 'react';
 import './OrderTable.scss';
-import OrderItem from './OrderItem/OrderItem';
+import TableItem from '../../../../components/TableItem/TableItem';
+import { deleteOrder } from '../../../../API/orders';
 
 type Props = {
     orders: Order[],
@@ -16,25 +17,33 @@ const OrderTable: React.FC<Props> = ({
 }) => {
     return (
         <div className='order-table'>
-            <OrderItem order={{
+            <TableItem item={{
                 id: '№',
                 total: 'Сумма заказа',
                 contract: 'Номер контракта',
                 contract_date: 'Дата контракта',
                 status: 'Статус заказа',
-            } as unknown as Order} isFirst/>
-            {orders.map((order, index) => (
-                <OrderItem 
-                    order={order}
-                    isFirst={false}
-                    isLast={index === orders.length - 1}
-                    key={order.id}
-                    setSelectedOrder={setSelectedOrder}
-                    setIsOrderSelected={setIsOrderSelected}
-                    setCreatedOrders={setCreatedOrders}
-                    createdOrders={createdOrders}
-                />
-            ))}
+            }} isFirst/>
+            {
+                orders.map((order, index) => {
+                    const item = { ...order };
+                    if (item.contract === null) item.contract = 'NO';
+                    item.contract_date
+                    = item.contract_date ? (new Date(item.contract_date)).toLocaleDateString() : '';
+                    return (
+                        <TableItem 
+                            key={item.id}
+                            item={item as Record<string, string | number>}
+                            isFirst={false}
+                            isLast={index === orders.length - 1}
+                            setSelectedItem={setSelectedOrder}
+                            setIsItemSelected={setIsOrderSelected}
+                            createdItems={createdOrders}
+                            setCreatedItems={setCreatedOrders}
+                            // eslint-disable-next-line max-len
+                            deleteFunction={order.status === 'created' || order.status === 'waiting for changes' ? deleteOrder : undefined}/>
+                    );
+                })}
         </div>
     );
 };
