@@ -1,8 +1,13 @@
 import Button from '../../../../components/Button/Button';
 import { Link } from 'react-router-dom';
 import './ManagerNav.scss';
+import { logout } from '../../../../API/user';
 
-const ManagerNav = () => {
+type Props = {
+    setUser: (u: null) => void
+}
+
+const ManagerNav: React.FC<Props> = ({ setUser }) => {
     return (
         <nav>
             <Link to='/manager/products'>
@@ -20,6 +25,12 @@ const ManagerNav = () => {
             <Link to='/manager/managers'>
                 <Button>Менеджеры</Button>
             </Link>
+            <Button className='logout-button' onClick={() => {
+                logout()
+                    .then(() => setUser(null));
+            }}>
+                Выйти
+            </Button>
         </nav>
     );
 };

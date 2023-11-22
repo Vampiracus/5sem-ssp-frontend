@@ -6,9 +6,10 @@ import './ManagerPage.scss';
 
 type Props = {
     user: User | null | true
+    setUser: (u: null) => void
 }
 
-const ManagerPage: React.FC<Props> = ({ user }) => {
+const ManagerPage: React.FC<Props> = ({ user, setUser }) => {
 
     if (!user) {
         return <Navigate to='/'/>;
@@ -16,7 +17,7 @@ const ManagerPage: React.FC<Props> = ({ user }) => {
 
     return (
         <div className='manager-page'>
-            <ManagerNav />
+            <ManagerNav setUser={setUser}/>
             <Routes>
                 <Route path='products' element={<ProductsTable />}/>
             </Routes>
