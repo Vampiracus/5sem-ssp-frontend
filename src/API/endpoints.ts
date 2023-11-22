@@ -15,3 +15,5 @@ export const logoutURL = baseURL + '/logout';
 
 export const ProductsURL = baseURL + '/product';
 export const BaseProductsURL = baseURL + '/product/';
+
+export const ClientsURL = baseURL + '/client';

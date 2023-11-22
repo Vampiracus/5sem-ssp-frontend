@@ -18,6 +18,8 @@ declare global {
         expirationDate: string
     }
     
+    type ClientNoUserType = Omit<Client, 'userType'>
+    
     type User = null | Manager | Client
 
     type Order = {

@@ -11,7 +11,6 @@ export async function getAllProducts(): Promise<Product[]> {
     }
 }
 
-
 export async function postProduct(name: string, cost: number) {
     const res = await fetch(ProductsURL, withBody(postConfig, JSON.stringify({
         id: 'NULL',
