@@ -1,7 +1,8 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
-import Container from '../../components/Container/Container';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import ManagerNav from './components/ManagerNav/ManagerNav';
+import ProductsTable from './components/ProductsTable/ProductsTable';
+import './ManagerPage.scss';
 
 type Props = {
     user: User | null | true
@@ -16,8 +17,9 @@ const ManagerPage: React.FC<Props> = ({ user }) => {
     return (
         <div className='manager-page'>
             <ManagerNav />
-            <Container>
-            </Container>
+            <Routes>
+                <Route path='products' element={<ProductsTable />}/>
+            </Routes>
         </div>
     );
 };

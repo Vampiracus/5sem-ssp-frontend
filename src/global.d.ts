@@ -32,6 +32,13 @@ declare global {
         id: 'NULL' | number,
         product_count: number,
         order_id: 'NULL' | number,
-        product_id: number
+        product_id: number,
+        product_name: string
+    }
+
+    type Product = {
+        id: number,
+        cost: number,
+        name: string
     }
 }

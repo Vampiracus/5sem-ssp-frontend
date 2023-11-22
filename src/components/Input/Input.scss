@@ -22,11 +22,15 @@
         color: inherit;
     }
 
-    &__label {
+    &__validation-label {
         color: colors.$error-primary;
     }
-    
+
     &_incorrect {
-        box-shadow: 0 0 8px colors.$error-primary;
+        background-color: colors.$error-primary-hover;
+
+        & > label {
+            display: none;
+        }
     }
 }

@@ -9,9 +9,15 @@
     flex-direction: column;
     gap: 20px;
 
-    &__button {
-        font-weight: 800;
-        font-size: 2rem;
-        padding: 50px;
+    &__to-auth-buttons {
+        display: flex;
+        justify-content: space-between;
+
+        &__button {
+            font-weight: 800;
+            font-size: 2rem;
+            padding: 30px;
+            min-width: 200px;
+        }
     }
 }

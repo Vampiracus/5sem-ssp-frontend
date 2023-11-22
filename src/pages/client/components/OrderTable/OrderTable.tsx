@@ -43,7 +43,8 @@ const OrderTable: React.FC<Props> = ({
                             // eslint-disable-next-line max-len
                             deleteFunction={order.status === 'created' || order.status === 'waiting for changes' ? deleteOrder : undefined}/>
                     );
-                })}
+                })
+            }
         </div>
     );
 };

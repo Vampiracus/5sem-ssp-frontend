@@ -8,12 +8,18 @@ const WelcomePage: React.FC<{user: User | null | true}> = ({ user }) => {
 
     return (
         <Container class='welcome-page'>
-            <Link to='/login/client'>
-                <Button className='welcome-page__button'>Клиент</Button>
-            </Link>
-            <Link to='/login/manager'>
-                <Button className='welcome-page__button'>Менеджер</Button>
-            </Link>
+            <p>
+                Добро пожаловать на сайт компании "Стулы и столья"!
+            </p>
+            <span>Пожалуйста, представьтесь</span>
+            <div className='welcome-page__to-auth-buttons'>
+                <Link to='/login/client'>
+                    <Button className='welcome-page__to-auth-buttons__button'>Клиент</Button>
+                </Link>
+                <Link to='/login/manager'>
+                    <Button className='welcome-page__to-auth-buttons__button'>Менеджер</Button>
+                </Link>
+            </div>
         </Container>
     );
 };

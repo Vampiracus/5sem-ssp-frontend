@@ -66,6 +66,7 @@ const AuthPage: React.FC<Props> = ({ isForClient, user, setUser }) => {
                     value={login}
                     setValue={setLogin}
                     isIncorrect={incorrectTimeout ? true : false}
+                    placeholder='Логин'
                 />
                 <Input 
                     prefix='authorization' 
@@ -75,6 +76,7 @@ const AuthPage: React.FC<Props> = ({ isForClient, user, setUser }) => {
                     setValue={setPassword}
                     type='password'
                     isIncorrect={incorrectTimeout ? true : false}
+                    placeholder='Пароль'
                 />
                 <Button onClick={signin}>Войти!</Button>
             </form>

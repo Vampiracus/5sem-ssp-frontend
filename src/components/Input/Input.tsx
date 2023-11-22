@@ -6,21 +6,29 @@ type Props = {
   validationFunction: (a: string) => string | boolean,
   prefix: string,
   name: string,
+  placeholder: string,
   value: string,
   setValue: (newVal: string) => void,
   isIncorrect?: boolean,
+  setIsIncorrect?: (b: boolean) => void,
   autoFocus?: boolean,
   type?: string,
   className?: string
 }
 
-const Input: React.FC<Props>
-= ({ validationFunction, prefix, name, setValue, isIncorrect, className, ...props }) => {
+const Input: React.FC<Props> = ({
+    validationFunction, prefix, placeholder,
+    name, setValue,
+    isIncorrect, className,
+    setIsIncorrect, ...props
+}) => {
     const id = prefix + '-' + name + 'input';
     const [validationText, setValidationText] = useState('');
   
 
     const clickHandler: React.ChangeEventHandler<HTMLInputElement> = useCallback(e => {
+        if (setIsIncorrect) setIsIncorrect(false);
+
         // validation part
         const res = validationFunction(e.target.value);
         if (typeof res === 'string') {
@@ -31,16 +39,16 @@ const Input: React.FC<Props>
 
         // setting new value
         setValue(e.target.value);
-    }, [validationFunction, setValue]);
+    }, [validationFunction, setValue, setIsIncorrect]);
 
     return (
         <div className={'validated-input' + (isIncorrect ? ' validated-input_incorrect' : '')}>
-            <label htmlFor={'#' + id} className='validated-input__label'>
-                {validationText}
-            </label>
             <input className={
                 'validated-input__input ' + (className ? className : '')
-            } id={id} name={name} onChange={clickHandler} placeholder={name} {...props}/>
+            } id={id} name={name} onChange={clickHandler} placeholder={placeholder} {...props}/>
+            <label htmlFor={'#' + id} className='validated-input__validation-label'>
+                {validationText}
+            </label>
         </div>
     );
 };

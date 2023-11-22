@@ -1,4 +1,16 @@
+@use '../../../../colors.scss';
+
 nav {
     display: flex;
-    justify-content: space-around space-between;
+    justify-content: space-around;
+    gap: 40px;
+    background-color: colors.$secondary-background;
+    padding: 10px;
+
+    & > a {
+        flex: 1;
+        & > button {
+            min-height:5vh;
+        }
+    }
 }

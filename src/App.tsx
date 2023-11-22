@@ -24,7 +24,7 @@ function App() {
             <Route path='/login/manager'
                 element={<AuthPage user={user} setUser={setUser} isForClient={false}/>} />
             <Route path='/client' element={<ClientPage user={user} setUser={setUser}/>} />
-            <Route path='/manager' element={<ManagerPage user={user}/>} />
+            <Route path='/manager/*' element={<ManagerPage user={user}/>} />
             <Route path='*' element={<div />} />
         </Routes>
     );

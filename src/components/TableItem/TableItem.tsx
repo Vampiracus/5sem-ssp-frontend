@@ -25,10 +25,30 @@ const TableItem: React.FC<Props> = ({
     setCreatedItems,
     deleteFunction,
 }) => {
+    const [wantDelete, setWantDelete] = React.useState(false);
+    const [wantDeleteTimeout, setWantDeleteTimeout] = React.useState<null | number>(null);
+
+    React.useEffect(() => () => {
+        if (wantDeleteTimeout !== null) {
+            clearTimeout(wantDeleteTimeout);
+            console.log('l');
+        }
+    });
+
     if (!item) return <></>;
 
     const eraser: React.MouseEventHandler<HTMLDivElement> = e => {
         e.stopPropagation();
+        if (!wantDelete) {
+            setWantDelete(true);
+            setWantDeleteTimeout(setTimeout(() => {
+                setWantDelete(false);
+                setWantDeleteTimeout(null);
+            }, 2000));
+            return;
+        }
+        setWantDelete(false);
+        setWantDeleteTimeout(null);
         if (deleteFunction && setCreatedItems && createdItems !== undefined) {
             deleteFunction(item)
                 .then(() => {
@@ -57,7 +77,8 @@ const TableItem: React.FC<Props> = ({
                         ? 'Удалить'
                         : deleteFunction
                             ? <div 
-                                className='table-item__micro__delete-button'
+                                // eslint-disable-next-line max-len
+                                className={'table-item__micro__delete-button' + (wantDelete && ' table-item__micro__delete-button_want-delete' || '')}
                                 onClick={eraser}>X</div>
                             : ''
                 }

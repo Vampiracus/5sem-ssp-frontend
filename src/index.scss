@@ -1,6 +1,10 @@
 @use 'colors.scss';
 
 body {
+    position: absolute;
+    left: 0;
+    top: 0;
+
     background-color: colors.$primary-background;
     color: colors.$primary-text;
 
@@ -12,13 +16,15 @@ body {
 
     min-width: 300px;
     margin: 0;
+
+    font-size: x-large;
 }
 
-h3 {
+h3, p, span {
     color: colors.$primary;
 }
 
-a {
+a, button {
     font: inherit;
     color:inherit;
 }

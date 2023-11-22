@@ -34,6 +34,7 @@ const OrderForm: React.FC<Props> = ({ order, active, setActive }) => {
                     product_count: 'Количество товара',
                     order_id: 'Номер заказа',
                     product_id: 'Номер товара',
+                    product_name: 'Название товара',
                 }} isFirst/>
                 {items.map((item, index) => (
                     <TableItem 

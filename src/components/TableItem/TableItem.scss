@@ -18,15 +18,34 @@
         }
 
         &__delete-button {
-            width: 14px;
-            height: 15px;
+            width: 1.7rem;
+            height: 1.7rem;
             border-radius: 50%;
-            background-color: colors.$error-primary;
+            background-color: colors.$info-primary;
             font-size: smaller;
+            font-weight: 900;
+            transition: 0.2s;
+            user-select: none;
+
+            &_want-delete {
+                background-color: colors.$error-primary;
+
+                &:hover {
+                    background-color: colors.$error-primary-hover !important;
+                }
+
+                &:active {
+                    background-color: colors.$error-primary-active !important;
+                    color: colors.$primary;
+                }
+            }
 
             &:hover {
-                background-color: colors.$error-primary-hover;
-                color: colors.$primary;
+                background-color: colors.$info-primary-hover;
+            }
+
+            &:active {
+                background-color: colors.$info-primary-active;
             }
         }
     }
