@@ -6,4 +6,16 @@
     & > .new-item-form {
         margin-top: 10px;
     }
+
+    &__send-button {
+        background-color: rgba(colors.$info-primary, 0.7);
+
+        &:hover {
+            background-color: colors.$info-primary-hover;
+        }
+
+        &:active {
+            background-color: colors.$info-primary-active;
+        }
+    }
 }

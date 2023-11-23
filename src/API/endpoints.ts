@@ -8,6 +8,11 @@ export const baseOrderItemURL = baseURL + '/order_item/';
 export const orderItemURL = baseURL + '/order_item';
 export const baseOrderURL = baseURL + '/order/';
 export const orderURL = baseURL + '/order';
+export const baseSendOrderURL = baseURL + '/order/create/';
+export const baseOrderSignedURL = baseURL + '/order/is_signed/';
+export const baseOrderReadyURL = baseURL + '/order/ready/';
+export const baseSetOrderHasContractURL = baseURL + '/order/has_contract/';
+export const baseRejectOrderURL = baseURL + '/order/wait_for_changes/';
 
 export const loginClientURL = baseURL + '/login/client';
 export const loginManagerURL = baseURL + '/login/manager';
@@ -17,3 +22,4 @@ export const ProductsURL = baseURL + '/product';
 export const BaseProductsURL = baseURL + '/product/';
 
 export const ClientsURL = baseURL + '/client';
+export const ManagersURL = baseURL + '/manager';

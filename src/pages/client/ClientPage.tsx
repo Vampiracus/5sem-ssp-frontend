@@ -24,6 +24,8 @@ const ClientPage: React.FC<Props> = ({ user, setUser }) => {
     
     React.useEffect(() => {
         getClientOrders().then(res => setOrders(res));
+        setSelectedOrder(null);
+        setIsOrderSelected(false);
     }, [createdOrders]);
 
     if (!user) {
@@ -46,6 +48,9 @@ const ClientPage: React.FC<Props> = ({ user, setUser }) => {
                 order={selectedOrder}
                 active={isOrderSelected}
                 setActive={setIsOrderSelected}
+                updateOrders={() => {
+                    setCreatedOrders(createdOrders + 1);
+                }}
             />
             <Button className='client-page__logout-button' onClick={() => {
                 logout()

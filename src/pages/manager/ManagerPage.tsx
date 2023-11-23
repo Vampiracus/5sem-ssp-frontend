@@ -4,6 +4,8 @@ import ManagerNav from './components/ManagerNav/ManagerNav';
 import ProductsTable from './components/ProductsTable/ProductsTable';
 import './ManagerPage.scss';
 import ClientsTable from './components/ClientsTable/ClientsTable';
+import ManagersTable from './components/ManagersTable/ManagersTable';
+import OrderTable from './components/OrderTable/OrderTable';
 
 type Props = {
     user: User | null | true
@@ -22,6 +24,8 @@ const ManagerPage: React.FC<Props> = ({ user, setUser }) => {
             <Routes>
                 <Route path='products' element={<ProductsTable />}/>
                 <Route path='clients' element={<ClientsTable />}/>
+                <Route path='managers' element={<ManagersTable />}/>
+                <Route path='orders' element={<OrderTable />}/>
             </Routes>
         </div>
     );

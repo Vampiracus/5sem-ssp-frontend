@@ -1,0 +1,16 @@
+@use '../../../../../colors.scss';
+
+.manager-order-form {
+    border-radius: 8px;
+
+    & > .new-item-form {
+        margin-top: 10px;
+    }
+    min-width: 750px;
+
+    &__set-order-is-signed-button {
+        max-width: 200px;
+        margin-left: 10px;
+        color: colors.$primary-text;
+    }
+}

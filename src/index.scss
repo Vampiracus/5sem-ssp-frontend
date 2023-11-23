@@ -33,3 +33,9 @@ a, button {
     min-width: 100vw;
     min-height: 100vh;
 }
+
+.span-link {
+    text-decoration: underline;
+    color: colors.$info-primary;
+    cursor: pointer;
+}

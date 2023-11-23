@@ -8,6 +8,12 @@ declare global {
         name: string,
         expirationDate: string,
     }
+
+    type ExistingManager = {
+        login: string,
+        password: string,
+        name: string,
+    }
     
     type Client = {
         userType: 'client',
@@ -18,7 +24,13 @@ declare global {
         expirationDate: string
     }
     
-    type ClientNoUserType = Omit<Client, 'userType'>
+    type ExistingClient = {
+        password: string,
+        login: string,
+        name: string,
+        address: string,
+        phone: string,
+    }
     
     type User = null | Manager | Client
 

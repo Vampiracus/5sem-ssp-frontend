@@ -3,20 +3,22 @@ import Input from '../../../../../../components/Input/Input';
 import { validatePositiveNumber } from '../../../../../../utils/validation/validation';
 import Button from '../../../../../../components/Button/Button';
 import './../../../../../../components/NewItemForm/NewItemForm.scss';
-import { postOrderItem } from '../../../../../../API/orders';
+import { postOrderItem, sendOrder as sendOrderAPI } from '../../../../../../API/orders';
 
 type Props = {
     order_id: number,
     setCreatedNewItems: (a: number) => void
     createdNewItems: number
+    updateOrders: () => void
 }
 
-const NewItemForm: React.FC<Props> = ({ order_id, setCreatedNewItems, createdNewItems }) => {
+// eslint-disable-next-line max-len
+const NewItemForm: React.FC<Props> = ({ order_id, setCreatedNewItems, createdNewItems, updateOrders }) => {
     const [productId, setProductId] = React.useState('');
     const [productNumber, setProductNumber] = React.useState('');
     const [isProductIdIncorrect, setIsProductIdIncorrect] = React.useState(false);
     
-    const clickHandler: React.MouseEventHandler<HTMLButtonElement> = e => {
+    const addNewItem: React.MouseEventHandler<HTMLButtonElement> = e => {
         e.preventDefault();
         setProductId('');
         setProductNumber('');
@@ -29,6 +31,16 @@ const NewItemForm: React.FC<Props> = ({ order_id, setCreatedNewItems, createdNew
                     setCreatedNewItems(createdNewItems + 1);
                 }
             }).catch(() => {});
+    };
+
+    const sendOrder: React.MouseEventHandler<HTMLButtonElement> = e => {
+        e.preventDefault();
+        sendOrderAPI(order_id)
+            .then(res => {
+                if (res === 'OK') {
+                    updateOrders();
+                }
+            });
     };
 
     return (
@@ -53,7 +65,10 @@ const NewItemForm: React.FC<Props> = ({ order_id, setCreatedNewItems, createdNew
             /> 
             <Button
                 className='order-form__new-item-button'
-                onClick={clickHandler}>Добавить новый товар!</Button>
+                onClick={addNewItem}>Добавить новый товар</Button>
+            <Button
+                className='order-form__send-button'
+                onClick={sendOrder}>Отправить заказ</Button>
         </form>
     );
 };

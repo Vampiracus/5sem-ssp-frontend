@@ -5,7 +5,7 @@ import TableItem from '../../../../components/TableItem/TableItem';
 import { getAllClients } from '../../../../API/clients';
 
 const ClientsTable = () => {
-    const [clients, setClients] = React.useState<ClientNoUserType[]>([]);
+    const [clients, setClients] = React.useState<ExistingClient[]>([]);
     
     React.useEffect(() => {
         getAllClients()

@@ -30,7 +30,7 @@ const AddProductForm: React.FC<Props> = ({ setCreatedNewItems, createdNewItems }
     return (
         <form className='new-item-form'>
             <Input
-                prefix='new-item'
+                prefix='new-product-item'
                 name='name'
                 value={productName}
                 setValue={setProductName}
@@ -39,7 +39,7 @@ const AddProductForm: React.FC<Props> = ({ setCreatedNewItems, createdNewItems }
                 autoFocus
             /> 
             <Input
-                prefix='new-item'
+                prefix='new-product-item'
                 name='cost'
                 value={productCost}
                 setValue={setProductCost}

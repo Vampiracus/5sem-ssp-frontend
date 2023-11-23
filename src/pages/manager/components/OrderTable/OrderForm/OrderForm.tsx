@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
-import PopupContent from '../../../../components/PopupContent/PopupContent';
 import './OrderForm.scss';
-import NewItemForm from './components/NewItemForm/NewItemForm';
-import { deleteOrderItem, getOrderItems } from '../../../../API/orders';
-import TableItem from '../../../../components/TableItem/TableItem';
+import { getOrderItems } from '../../../../../API/orders';
+import PopupContent from '../../../../../components/PopupContent/PopupContent';
+import TableItem from '../../../../../components/TableItem/TableItem';
+import AssignContractForm from './components/AssignContractForm/AssignContractForm';
+import SetOrderIsSignedElement from './components/SetOrderIsSignedElement/SetOrderIsSignedElement';
+import SetOrderIsReadyElement from './components/SetOrderIsReadyElement/SetOrderIsReadyElement';
 
 type Props = {
     order: Order | null
@@ -13,10 +15,7 @@ type Props = {
 }
 
 const OrderForm: React.FC<Props> = ({ order, active, setActive, updateOrders }) => {
-    const canchange = order?.status === 'created' || order?.status === 'waiting for changes';
     const [items, setItems] = React.useState<OrderItem[]>([]);
-    const [createdNewItems, setCreatedNewItems] = React.useState(0);
-    
 
     useEffect(() => {
         if (!order) return;
@@ -24,12 +23,19 @@ const OrderForm: React.FC<Props> = ({ order, active, setActive, updateOrders }) 
             .then(res => {
                 setItems(res);
             });
-    }, [order, createdNewItems]);
+    }, [order]);
 
+    if (!order) return <></>;
 
     return (
         <PopupContent active={active} setActive={setActive}>
-            <div className='order-form'>
+            <div className='manager-order-form'>
+                <p>
+                    Статуз заказа: <code>{order?.status}</code>
+                </p>
+                <SetOrderIsSignedElement order={order} updateOrders={updateOrders}/>
+                <AssignContractForm order={order} updateOrders={updateOrders}/>
+                <SetOrderIsReadyElement order={order} updateOrders={updateOrders}/>
                 <TableItem item={{
                     id: 'ID',
                     product_count: 'Количество товара',
@@ -39,24 +45,12 @@ const OrderForm: React.FC<Props> = ({ order, active, setActive, updateOrders }) 
                 }} isFirst/>
                 {items.map((item, index) => (
                     <TableItem 
-                        key={item.id}
+                        key={index}
                         item={item}
                         isFirst={false}
                         isLast={index === items.length - 1}
-                        setCreatedItems={setCreatedNewItems}
-                        createdItems={createdNewItems}
-                        deleteFunction={canchange ? deleteOrderItem : undefined}
                     />
                 ))}
-                {
-                    canchange
-                        ? <NewItemForm
-                            order_id={order ? order.id : 0}
-                            setCreatedNewItems={setCreatedNewItems}
-                            createdNewItems={createdNewItems}
-                            updateOrders={updateOrders}/>
-                        : (<></>)
-                }
             </div>
         </PopupContent>
     );

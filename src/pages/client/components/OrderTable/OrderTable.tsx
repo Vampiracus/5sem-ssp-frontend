@@ -32,7 +32,7 @@ const OrderTable: React.FC<Props> = ({
                     = item.contract_date ? (new Date(item.contract_date)).toLocaleDateString() : '';
                     return (
                         <TableItem 
-                            key={item.id}
+                            key={item.id + item.status}
                             item={item as Record<string, string | number>}
                             isFirst={false}
                             isLast={index === orders.length - 1}
