@@ -2,13 +2,14 @@ import React from 'react';
 import { setOrderIsReady } from '../../../../../../../API/orders';
 
 type Props = {
-    order: Order,
+    user: ExistingManager
+    order: Order
     updateOrders: () => void
 }
 
-const SetOrderIsReadyElement: React.FC<Props> = ({ order, updateOrders }) => {
+const SetOrderIsReadyElement: React.FC<Props> = ({ order, updateOrders, user }) => {
 
-    if (order.status !== 'processing') return <></>;
+    if (order.status !== 'processing' || user.login !== order.manager_login) return <></>;
 
     const setReady: React.MouseEventHandler<HTMLButtonElement> = e => {
         e.preventDefault();

@@ -2,7 +2,8 @@ import { deleteConfig, getConfig, patchConfig, postConfig, withBody } from './co
 import {
     baseOrderItemsURL, baseOrderURL, baseOrderItemURL,
     clientOrdersURL, orderItemURL, orderURL, baseSendOrderURL,
-    baseSetOrderHasContractURL, baseOrderSignedURL, baseRejectOrderURL, baseOrderReadyURL 
+    baseSetOrderHasContractURL, baseOrderSignedURL, baseRejectOrderURL,
+    baseOrderReadyURL, baseBlockOrderURL, baseUnblockOrderURL 
 } from './endpoints';
 
 export async function getAllOrders(): Promise<Order[]> {
@@ -140,6 +141,26 @@ export async function sendOrderContract(order_id: number, contract: string, date
 
 export async function rejectOrder(order_id: number) {
     const res = await fetch(baseRejectOrderURL + order_id, patchConfig);
+    try {
+        const result = await res.text();
+        return result;
+    } catch (e) {
+        return '';
+    }
+}
+
+export async function blockOrder(order_id: number) {
+    const res = await fetch(baseBlockOrderURL + order_id, patchConfig);
+    try {
+        const result = await res.text();
+        return result;
+    } catch (e) {
+        return '';
+    }
+}
+
+export async function unblockOrder(order_id: number) {
+    const res = await fetch(baseUnblockOrderURL + order_id, patchConfig);
     try {
         const result = await res.text();
         return result;

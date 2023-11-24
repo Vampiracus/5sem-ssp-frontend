@@ -6,15 +6,18 @@ import TableItem from '../../../../../components/TableItem/TableItem';
 import AssignContractForm from './components/AssignContractForm/AssignContractForm';
 import SetOrderIsSignedElement from './components/SetOrderIsSignedElement/SetOrderIsSignedElement';
 import SetOrderIsReadyElement from './components/SetOrderIsReadyElement/SetOrderIsReadyElement';
+// eslint-disable-next-line max-len
+import ResponsibleManagerControls from './components/ResponsibleManagerEls/ResponsibleManagerControls';
 
 type Props = {
     order: Order | null
     active: boolean
     setActive: (a: boolean) => void
     updateOrders: () => void
+    user: ExistingManager
 }
 
-const OrderForm: React.FC<Props> = ({ order, active, setActive, updateOrders }) => {
+const OrderForm: React.FC<Props> = ({ order, active, setActive, updateOrders, user }) => {
     const [items, setItems] = React.useState<OrderItem[]>([]);
 
     useEffect(() => {
@@ -33,9 +36,9 @@ const OrderForm: React.FC<Props> = ({ order, active, setActive, updateOrders }) 
                 <p>
                     Статуз заказа: <code>{order?.status}</code>
                 </p>
-                <SetOrderIsSignedElement order={order} updateOrders={updateOrders}/>
-                <AssignContractForm order={order} updateOrders={updateOrders}/>
-                <SetOrderIsReadyElement order={order} updateOrders={updateOrders}/>
+                <SetOrderIsSignedElement order={order} updateOrders={updateOrders} user={user}/>
+                <AssignContractForm order={order} updateOrders={updateOrders} user={user}/>
+                <SetOrderIsReadyElement order={order} updateOrders={updateOrders} user={user}/>
                 <TableItem item={{
                     id: 'ID',
                     product_count: 'Количество товара',
@@ -51,6 +54,7 @@ const OrderForm: React.FC<Props> = ({ order, active, setActive, updateOrders }) 
                         isLast={index === items.length - 1}
                     />
                 ))}
+                <ResponsibleManagerControls order={order} updateOrders={updateOrders} user={user}/>
             </div>
         </PopupContent>
     );

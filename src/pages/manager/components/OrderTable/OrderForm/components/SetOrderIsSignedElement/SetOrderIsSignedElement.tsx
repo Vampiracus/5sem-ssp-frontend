@@ -2,13 +2,15 @@ import React from 'react';
 import { setContractIsSigned } from '../../../../../../../API/orders';
 
 type Props = {
-    order: Order,
+    order: Order
     updateOrders: () => void
+    user: ExistingManager
 }
 
-const SetOrderIsSignedElement: React.FC<Props> = ({ order, updateOrders }) => {
+const SetOrderIsSignedElement: React.FC<Props> = ({ order, updateOrders, user }) => {
 
-    if (order.status !== 'processing (no signature)') return <></>;
+    if (order.status !== 'processing (no signature)' || user.login !== order.manager_login)
+        return <></>;
 
     const setSigned: React.MouseEventHandler<HTMLButtonElement> = e => {
         e.preventDefault();

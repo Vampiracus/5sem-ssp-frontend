@@ -35,11 +35,12 @@ declare global {
     type User = null | Manager | Client
 
     type Order = {
-        id: number,
-        total: number,
-        contract: string | null,
-        contract_date: string | null,
+        id: number
+        total: number
+        contract: string | null
+        contract_date: string | null
         status: string
+        manager_login: null | string
     }
 
     type OrderItem = {

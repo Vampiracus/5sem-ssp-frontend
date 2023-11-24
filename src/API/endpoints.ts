@@ -13,6 +13,8 @@ export const baseOrderSignedURL = baseURL + '/order/is_signed/';
 export const baseOrderReadyURL = baseURL + '/order/ready/';
 export const baseSetOrderHasContractURL = baseURL + '/order/has_contract/';
 export const baseRejectOrderURL = baseURL + '/order/wait_for_changes/';
+export const baseBlockOrderURL = baseURL + '/order/set_manager/';
+export const baseUnblockOrderURL = baseURL + '/order/unset_manager/';
 
 export const loginClientURL = baseURL + '/login/client';
 export const loginManagerURL = baseURL + '/login/manager';

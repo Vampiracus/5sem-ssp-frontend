@@ -9,16 +9,18 @@ import {
 import './AssignContractForm.scss';
 
 type Props = {
-    order: Order,
+    user: ExistingManager
+    order: Order
     updateOrders: () => void
 }
 
-const AssignContractForm: React.FC<Props> = ({ order, updateOrders }) => {
+const AssignContractForm: React.FC<Props> = ({ order, updateOrders, user }) => {
     const [contract, setContract] = React.useState('');
     const [contract_date, setContract_date] = React.useState('');
     const [isProductIdIncorrect, setIsProductIdIncorrect] = React.useState(false);
 
-    if (order.status !== 'processing (no contract)') return <></>;
+    if (order.status !== 'processing (no contract)' || order.manager_login !== user.login)
+        return <></>;
     
     const sendOrderContract: React.MouseEventHandler<HTMLButtonElement> = e => {
         e.preventDefault();
@@ -33,11 +35,7 @@ const AssignContractForm: React.FC<Props> = ({ order, updateOrders }) => {
     const rejectOrder: React.MouseEventHandler<HTMLButtonElement> = e => {
         e.preventDefault();
         rejectOrderAPI(order.id)
-            .then(res => {
-                if (res === 'OK') {
-                    updateOrders();
-                }
-            });
+            .finally(() => updateOrders());
     };
 
     return (
