@@ -50,6 +50,12 @@ declare global {
         product_id: number,
         product_name: string
     }
+    
+    type ShippedItem = {
+        id: number,
+        order_id: number,
+        shipped: number,
+    }
 
     type Product = {
         id: number,

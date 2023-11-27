@@ -14,14 +14,16 @@ const OrderTable: React.FC<{ user: ExistingManager }> = ({ user }) => {
     const [ordesUpdated, setOrdersUpdated] = React.useState<number>(0);
     const updateOrders = () => setOrdersUpdated(ordesUpdated + 1);
     
+    const [noCotract, setNoCotract] = React.useState(false);
+    
     
     React.useEffect(() => {
-        getAllOrders()
+        getAllOrders(noCotract)
             .then(res => {
                 setSelectedOrder(null);
                 setOrders(res);
             });
-    }, [ordesUpdated]);
+    }, [ordesUpdated, noCotract]);
 
     return (
         <Container outerClass='order-table__outer' class='order-table'>
@@ -58,6 +60,14 @@ const OrderTable: React.FC<{ user: ExistingManager }> = ({ user }) => {
                 order={selectedOrder}
                 updateOrders={updateOrders}
                 user={user}/>
+            <div>
+                <input
+                    id='no-cotract-input'
+                    type='checkbox'
+                    //@ts-expect-error checked is in input[type='checkbox']
+                    onClick={e => setNoCotract(e.target.checked)}/>
+                <label htmlFor='no-cotract-input'><span>без контрактов</span></label>
+            </div>
         </Container >
     );
 };

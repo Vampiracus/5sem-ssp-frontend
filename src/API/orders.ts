@@ -3,14 +3,26 @@ import {
     baseOrderItemsURL, baseOrderURL, baseOrderItemURL,
     clientOrdersURL, orderItemURL, orderURL, baseSendOrderURL,
     baseSetOrderHasContractURL, baseOrderSignedURL, baseRejectOrderURL,
-    baseOrderReadyURL, baseBlockOrderURL, baseUnblockOrderURL 
+    baseOrderReadyURL, baseBlockOrderURL, baseUnblockOrderURL,
+    orderNoContractURL, baseOrderShippedURL 
 } from './endpoints';
 
-export async function getAllOrders(): Promise<Order[]> {
-    const res = await fetch(orderURL, getConfig);
+export async function getAllOrders(noContract?: boolean): Promise<Order[]> {
+    const url = (noContract === true) ? orderNoContractURL : orderURL;
+    const res = await fetch(url, getConfig);
     try {
         let result: Order[] = await res.json();
         result = result.filter(o => o.status !== 'created');
+        return result;
+    } catch (e) {
+        return [];
+    }
+}
+
+export async function getShippedItems(orderId: number): Promise<ShippedItem[]> {
+    const res = await fetch(baseOrderShippedURL + orderId, getConfig);
+    try {
+        const result: ShippedItem[] = await res.json();
         return result;
     } catch (e) {
         return [];
@@ -70,6 +82,7 @@ export async function postOrder(login: string) {
         contract_date: 'NULL',
         status: 'created',
         client_login: login,
+        manager_login: 'NULL',
     })));
     try {
         const result = await res.text();

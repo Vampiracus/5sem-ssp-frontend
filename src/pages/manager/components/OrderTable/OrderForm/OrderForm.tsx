@@ -39,12 +39,14 @@ const OrderForm: React.FC<Props> = ({ order, active, setActive, updateOrders, us
                 <SetOrderIsSignedElement order={order} updateOrders={updateOrders} user={user}/>
                 <AssignContractForm order={order} updateOrders={updateOrders} user={user}/>
                 <SetOrderIsReadyElement order={order} updateOrders={updateOrders} user={user}/>
+                <p>Содержание заказа:</p>
                 <TableItem item={{
-                    id: 'ID',
+                    id: 'ID строки заказа',
                     product_count: 'Количество товара',
                     order_id: 'Номер заказа',
                     product_id: 'Номер товара',
                     product_name: 'Название товара',
+                    shipped: 'Доставлено',
                 }} isFirst/>
                 {items.map((item, index) => (
                     <TableItem 
