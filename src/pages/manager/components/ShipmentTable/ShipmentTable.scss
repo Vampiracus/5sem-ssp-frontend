@@ -1,0 +1,22 @@
+.shipment-table {
+    &__outer {
+        min-height: 80vh;
+    }
+    
+    display: flex;
+    flex-direction: column;
+    
+    overflow-y: scroll;
+        
+    &::-webkit-scrollbar {
+        width: 5px;
+
+        &-thumb {
+            background-color: rgba(0 0 0 / 40%);
+            border-radius: 5px;
+        }
+    }
+
+    max-height: 75vh;
+    min-width: 900px;
+}

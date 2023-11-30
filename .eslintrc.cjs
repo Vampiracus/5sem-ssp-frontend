@@ -12,7 +12,8 @@ module.exports = {
   "rules": {
     "indent": [
         "error",
-        4
+        4,
+        { "ignoredNodes": ["ConditionalExpression"] }
     ],
     "quotes": [
         "error",
@@ -64,7 +65,6 @@ module.exports = {
         "mode": "minimum"
         }],
     "no-var": "error",
-
 
     "@typescript-eslint/type-annotation-spacing": "error",
     "@typescript-eslint/no-explicit-any": "off"

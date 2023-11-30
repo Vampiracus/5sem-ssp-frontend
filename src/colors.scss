@@ -10,6 +10,7 @@ $secondary-background: #555;
 $error-primary: #c22;
 $error-primary-hover: #cc2f2f;
 $error-primary-active: #dc2f2f;
+$error-primary-text: $primary-text;
 
 $info-primary: #29c;
 $info-primary-hover: #18b;
@@ -31,3 +32,20 @@ $info-primary-active: #3ac;
 // ::placeholder {
 //     color: #ccc;
 // }
+
+
+$primary: #ffb800;
+$primary-hover: #ffca40;
+$primary-active: #a67800;
+$primary-text: #444;
+$primary-background: #ffd873;
+$secondary-background: #bf9730;
+
+$info-primary: #FF7F00;
+$info-primary-text: #A65200;
+$info-primary-hover: #FF9F40;
+$info-primary-active: $info-primary-hover;
+
+$error-primary: #ff2c00;
+$error-primary-text: #A61D00;
+$error-primary-hover: #FF6140;

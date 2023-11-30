@@ -27,8 +27,9 @@ const OrderTable: React.FC<{ user: ExistingManager }> = ({ user }) => {
 
     return (
         <Container outerClass='order-table__outer' class='order-table'>
+            <h3>Заказы</h3>
             <TableItem item={{
-                id: 'ID',
+                id: 'ID заказа',
                 total: 'Сумма',
                 contract: 'Контракт №',
                 contract_date: 'Дата контракта',

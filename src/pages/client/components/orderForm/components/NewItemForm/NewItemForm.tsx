@@ -62,6 +62,7 @@ const NewItemForm: React.FC<Props> = ({ order_id, setCreatedNewItems, createdNew
                 setValue={setProductNumber}
                 validationFunction={validatePositiveNumber}
                 placeholder='Количество товара'
+                maxLength={7}
             /> 
             <Button
                 className='order-form__new-item-button'

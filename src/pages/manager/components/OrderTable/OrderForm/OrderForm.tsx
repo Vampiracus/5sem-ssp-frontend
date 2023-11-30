@@ -8,6 +8,9 @@ import SetOrderIsSignedElement from './components/SetOrderIsSignedElement/SetOrd
 import SetOrderIsReadyElement from './components/SetOrderIsReadyElement/SetOrderIsReadyElement';
 // eslint-disable-next-line max-len
 import ResponsibleManagerControls from './components/ResponsibleManagerEls/ResponsibleManagerControls';
+import AddShippmentForm from './components/AddShippmentForm/AddShippmentForm';
+// eslint-disable-next-line max-len
+import SetOrderIsFinishedElement from './components/SetOrderIsFinishedElement/SetOrderIsFinishedElement';
 
 type Props = {
     order: Order | null
@@ -39,6 +42,12 @@ const OrderForm: React.FC<Props> = ({ order, active, setActive, updateOrders, us
                 <SetOrderIsSignedElement order={order} updateOrders={updateOrders} user={user}/>
                 <AssignContractForm order={order} updateOrders={updateOrders} user={user}/>
                 <SetOrderIsReadyElement order={order} updateOrders={updateOrders} user={user}/>
+                <AddShippmentForm order={order} updateOrders={updateOrders} user={user}/>
+                <SetOrderIsFinishedElement
+                    order={order}
+                    updateOrders={updateOrders}
+                    user={user}
+                    items={items}/>
                 <p>Содержание заказа:</p>
                 <TableItem item={{
                     id: 'ID строки заказа',

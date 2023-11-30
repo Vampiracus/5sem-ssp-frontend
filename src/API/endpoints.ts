@@ -12,6 +12,7 @@ export const orderNoContractURL = baseURL + '/order/no_contract';
 export const baseSendOrderURL = baseURL + '/order/create/';
 export const baseOrderSignedURL = baseURL + '/order/is_signed/';
 export const baseOrderReadyURL = baseURL + '/order/ready/';
+export const baseOrderFinishedURL = baseURL + '/order/finished/';
 export const baseSetOrderHasContractURL = baseURL + '/order/has_contract/';
 export const baseOrderShippedURL = baseURL + '/order/shipped/';
 export const baseRejectOrderURL = baseURL + '/order/wait_for_changes/';
@@ -27,3 +28,4 @@ export const BaseProductsURL = baseURL + '/product/';
 
 export const ClientsURL = baseURL + '/client';
 export const ManagersURL = baseURL + '/manager';
+export const ShipmentURL = baseURL + '/shipment';

@@ -27,7 +27,6 @@ const OrderTable: React.FC<Props> = ({
             {
                 orders.map((order, index) => {
                     const item = { ...order };
-                    if (item.contract === null) item.contract = 'NO';
                     item.contract_date
                     = item.contract_date ? (new Date(item.contract_date)).toLocaleDateString() : '';
                     return (
@@ -41,7 +40,7 @@ const OrderTable: React.FC<Props> = ({
                             createdItems={createdOrders}
                             setCreatedItems={setCreatedOrders}
                             // eslint-disable-next-line max-len
-                            deleteFunction={order.status === 'created' || order.status === 'waiting for changes' ? deleteOrder : undefined}/>
+                            deleteFunction={order.status === 'Создано' || order.status === 'Требуются изменения' ? deleteOrder : undefined}/>
                     );
                 })
             }

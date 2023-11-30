@@ -1,5 +1,6 @@
 import React from 'react';
 import './PopupContent.scss';
+import CloseButton from './CloseButton/CloseButton';
 
 type Props = {
     active: boolean
@@ -20,6 +21,7 @@ const PopupContent: React.FC<React.PropsWithChildren<Props>> = ({ active, childr
             onClick={clickHandler}
         >
             <div className={'popup-content__content'}>
+                <CloseButton onClick={setActive.bind({}, false)}/>
                 {children}
             </div>
         </div>

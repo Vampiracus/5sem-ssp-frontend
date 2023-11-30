@@ -17,6 +17,7 @@ const ManagersTable = () => {
 
     return (
         <Container outerClass='manager-table__outer' class='manager-table'>
+            <h3>Менеджеры</h3>
             <div className='manager-table__table'>
                 <TableItem item={{
                     login: 'Логин',

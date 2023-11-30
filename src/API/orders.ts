@@ -4,15 +4,35 @@ import {
     clientOrdersURL, orderItemURL, orderURL, baseSendOrderURL,
     baseSetOrderHasContractURL, baseOrderSignedURL, baseRejectOrderURL,
     baseOrderReadyURL, baseBlockOrderURL, baseUnblockOrderURL,
-    orderNoContractURL, baseOrderShippedURL 
+    orderNoContractURL, baseOrderShippedURL, baseOrderFinishedURL 
 } from './endpoints';
+
+function translatedStatuses(orders: Order[]) {
+    return orders.map(o => {
+        const status
+        = o.status as string === 'created' ? 'Создано'
+        : o.status as string === 'processing (no contract)' ? 'Ожидается создание контракта'
+        : o.status as string === 'waiting for changes' ? 'Требуются изменения'
+        : o.status as string === 'processing (no signature)' ? 'Ожидается подпись контракта'
+        : o.status as string === 'processing' ? 'Выполняется'
+        : o.status as string === 'cancelled' ? 'Отменен'
+        : o.status as string === 'ready' ? 'Готов'
+        : o.status as string === 'finished' ? 'Выполнен'
+        : '';
+        return {
+            ...o,
+            status,
+        } as Order;
+    });
+}
 
 export async function getAllOrders(noContract?: boolean): Promise<Order[]> {
     const url = (noContract === true) ? orderNoContractURL : orderURL;
     const res = await fetch(url, getConfig);
     try {
         let result: Order[] = await res.json();
-        result = result.filter(o => o.status !== 'created');
+        result = result.filter(o => o.status as string !== 'created');
+        result = translatedStatuses(result);
         return result;
     } catch (e) {
         return [];
@@ -32,7 +52,7 @@ export async function getShippedItems(orderId: number): Promise<ShippedItem[]> {
 export async function getClientOrders(): Promise<Order[]> {
     const res = await fetch(clientOrdersURL, getConfig);
     try {
-        const result = await res.json();
+        const result = translatedStatuses(await res.json());
         return result;
     } catch (e) {
         return [];
@@ -124,6 +144,16 @@ export async function setContractIsSigned(order_id: number) {
 
 export async function setOrderIsReady(order_id: number) {
     const res = await fetch(baseOrderReadyURL + order_id, patchConfig);
+    try {
+        const result = await res.text();
+        return result;
+    } catch (e) {
+        return '';
+    }
+}
+
+export async function setOrderIsFinished(order_id: number) {
+    const res = await fetch(baseOrderFinishedURL + order_id, patchConfig);
     try {
         const result = await res.text();
         return result;

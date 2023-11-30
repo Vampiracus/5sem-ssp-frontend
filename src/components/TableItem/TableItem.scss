@@ -26,6 +26,7 @@
             font-weight: 900;
             transition: 0.2s;
             user-select: none;
+            color: colors.$info-primary-text;
 
             &_want-delete {
                 background-color: colors.$error-primary;
@@ -36,7 +37,6 @@
 
                 &:active {
                     background-color: colors.$error-primary-active !important;
-                    color: colors.$primary;
                 }
             }
 

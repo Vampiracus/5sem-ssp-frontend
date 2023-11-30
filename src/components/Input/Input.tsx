@@ -13,7 +13,8 @@ type Props = {
   setIsIncorrect?: (b: boolean) => void,
   autoFocus?: boolean,
   type?: string,
-  className?: string
+  className?: string,
+  maxLength?: number
 }
 
 const Input: React.FC<Props> = ({

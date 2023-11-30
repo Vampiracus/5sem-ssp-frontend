@@ -19,6 +19,7 @@ nav {
 
         background-color: colors.$error-primary;
         border: colors.$error-primary-hover;
+        color: colors.$error-primary-text;
 
         &:hover, &:active {
             background-color: colors.$error-primary-hover;

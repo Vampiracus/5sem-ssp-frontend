@@ -17,9 +17,10 @@ const ProductsTable = () => {
 
     return (
         <Container outerClass='product-table__outer' class='product-table'>
+            <h3>Товары</h3>
             <div className='product-table__table'>
                 <TableItem item={{
-                    product_id: 'ID',
+                    product_id: 'ID заказа',
                     product_cost: 'Цена',
                     product_name: 'Название',
                 }} isFirst/>

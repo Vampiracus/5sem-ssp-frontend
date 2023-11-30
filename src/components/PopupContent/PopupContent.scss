@@ -15,8 +15,9 @@
     }
 
     &__content {
+        position: relative;
         padding: 25px;
-        background-color: colors.$primary-background;
+        background-color: colors.$secondary-background;
         border-radius: 12px;
         min-width: 260px;
         max-height: 80%;
@@ -28,6 +29,33 @@
             &-thumb {
                 background-color: rgba(0 0 0 / 40%);
                 border-radius: 5px;
+            }
+        }
+
+        &__close-button {
+            position: absolute;
+            top: 9px;
+            right: 5px;
+
+            text-align: center;
+            border: none;
+            width: 1.8rem;
+            height: 1.8rem;
+            border-radius: 50%;
+            font-size: smaller;
+            font-weight: 900;
+            transition: 0.2s;
+            user-select: none;
+            
+            color: colors.$info-primary-text;
+            background-color: colors.$error-primary;
+
+            &:hover {
+                background-color: colors.$error-primary-hover !important;
+            }
+
+            &:active {
+                background-color: colors.$error-primary-active !important;
             }
         }
     }

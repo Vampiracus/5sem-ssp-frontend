@@ -9,7 +9,7 @@ type Props = {
 
 const SetOrderIsSignedElement: React.FC<Props> = ({ order, updateOrders, user }) => {
 
-    if (order.status !== 'processing (no signature)' || user.login !== order.manager_login)
+    if (order.status !== 'Ожидается подпись контракта' || user.login !== order.manager_login)
         return <></>;
 
     const setSigned: React.MouseEventHandler<HTMLButtonElement> = e => {

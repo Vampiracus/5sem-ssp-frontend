@@ -14,6 +14,7 @@ const ClientsTable = () => {
 
     return (
         <Container outerClass='client-table__outer' class='client-table'>
+            <h3>Зарегистрированные клиенты</h3>
             <TableItem item={{
                 login: 'Логин',
                 name: 'Имя',

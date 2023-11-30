@@ -19,7 +19,7 @@ const AssignContractForm: React.FC<Props> = ({ order, updateOrders, user }) => {
     const [contract_date, setContract_date] = React.useState('');
     const [isProductIdIncorrect, setIsProductIdIncorrect] = React.useState(false);
 
-    if (order.status !== 'processing (no contract)' || order.manager_login !== user.login)
+    if (order.status !== 'Ожидается создание контракта' || order.manager_login !== user.login)
         return <></>;
     
     const sendOrderContract: React.MouseEventHandler<HTMLButtonElement> = e => {

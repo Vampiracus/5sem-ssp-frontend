@@ -21,7 +21,9 @@ body {
 }
 
 h3, p, span {
-    color: colors.$primary;
+    // color: colors.$primary;
+    color: colors.$primary-text;
+    font-weight: 500;
 }
 
 a, button {
@@ -36,6 +38,10 @@ a, button {
 
 .span-link {
     text-decoration: underline;
-    color: colors.$info-primary;
+    color: colors.$info-primary-text;
     cursor: pointer;
+}
+
+.usure {
+    color: colors.$error-primary-text;
 }

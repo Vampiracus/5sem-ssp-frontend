@@ -13,7 +13,7 @@ type Props = {
 }
 
 const OrderForm: React.FC<Props> = ({ order, active, setActive, updateOrders }) => {
-    const canchange = order?.status === 'created' || order?.status === 'waiting for changes';
+    const canchange = order?.status === 'Создано' || order?.status === 'Требуются изменения';
     const [items, setItems] = React.useState<OrderItem[]>([]);
     const [createdNewItems, setCreatedNewItems] = React.useState(0);
     
@@ -31,7 +31,7 @@ const OrderForm: React.FC<Props> = ({ order, active, setActive, updateOrders }) 
         <PopupContent active={active} setActive={setActive}>
             <div className='order-form'>
                 <TableItem item={{
-                    id: 'ID',
+                    id: 'ID строки заказа',
                     product_count: 'Количество товара',
                     order_id: 'Номер заказа',
                     product_id: 'Номер товара',

@@ -39,16 +39,18 @@ declare global {
         total: number
         contract: string | null
         contract_date: string | null
-        status: string
+        // eslint-disable-next-line max-len
+        status: 'Создано' | 'Ожидается создание контракта' | 'Требуются изменения' | 'Ожидается подпись контракта' | 'Выполняется' | 'Отменен' | 'Готов' | 'Выполнен'
         manager_login: null | string
     }
 
     type OrderItem = {
-        id: 'NULL' | number,
-        product_count: number,
-        order_id: 'NULL' | number,
-        product_id: number,
+        id: 'NULL' | number
+        product_count: number
+        order_id: 'NULL' | number
+        product_id: number
         product_name: string
+        shipped: number
     }
     
     type ShippedItem = {
@@ -61,5 +63,13 @@ declare global {
         id: number,
         cost: number,
         name: string
+    }
+
+    type Shipment = {
+        id: number,
+        shipped_count: number,
+        order_item_id: number,
+        date: string,
+        manager_login: string,
     }
 }

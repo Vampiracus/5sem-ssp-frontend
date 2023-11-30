@@ -9,6 +9,7 @@
 
     &__send-button {
         background-color: rgba(colors.$info-primary, 0.7);
+        color: colors.$info-primary-text;
 
         &:hover {
             background-color: colors.$info-primary-hover;

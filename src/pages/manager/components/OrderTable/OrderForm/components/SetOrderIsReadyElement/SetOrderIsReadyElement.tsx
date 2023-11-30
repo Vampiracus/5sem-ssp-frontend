@@ -9,7 +9,7 @@ type Props = {
 
 const SetOrderIsReadyElement: React.FC<Props> = ({ order, updateOrders, user }) => {
 
-    if (order.status !== 'processing' || user.login !== order.manager_login) return <></>;
+    if (order.status !== 'Выполняется' || user.login !== order.manager_login) return <></>;
 
     const setReady: React.MouseEventHandler<HTMLButtonElement> = e => {
         e.preventDefault();

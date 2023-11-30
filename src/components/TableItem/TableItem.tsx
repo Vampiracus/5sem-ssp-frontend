@@ -31,7 +31,6 @@ const TableItem: React.FC<Props> = ({
     React.useEffect(() => () => {
         if (wantDeleteTimeout !== null) {
             clearTimeout(wantDeleteTimeout);
-            console.log('l');
         }
     });
 
@@ -77,6 +76,7 @@ const TableItem: React.FC<Props> = ({
                         ? 'Удалить'
                         : deleteFunction
                             ? <div 
+                                title='Нажмите дважды, чтобы удалить'
                                 // eslint-disable-next-line max-len
                                 className={'table-item__micro__delete-button' + (wantDelete && ' table-item__micro__delete-button_want-delete' || '')}
                                 onClick={eraser}>X</div>
