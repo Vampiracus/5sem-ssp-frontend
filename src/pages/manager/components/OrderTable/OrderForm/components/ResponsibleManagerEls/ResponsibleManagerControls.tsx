@@ -2,8 +2,8 @@ import React from 'react';
 import { blockOrder, unblockOrder } from '../../../../../../../API/orders';
 
 type Props = {
-    user: ExistingManager,
-    order: Order,
+    user: Manager
+    order: Order
     updateOrders: () => void
 }
 

@@ -4,7 +4,7 @@ import { setContractIsSigned } from '../../../../../../../API/orders';
 type Props = {
     order: Order
     updateOrders: () => void
-    user: ExistingManager
+    user: Manager
 }
 
 const SetOrderIsSignedElement: React.FC<Props> = ({ order, updateOrders, user }) => {

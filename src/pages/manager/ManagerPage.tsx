@@ -9,17 +9,17 @@ import OrderTable from './components/OrderTable/OrderTable';
 import ShipmentTable from './components/ShipmentTable/ShipmentTable';
 
 type Props = {
-    user: ExistingManager | null | true
+    user: User | null | true
     setUser: (u: null) => void
 }
 
 const ManagerPage: React.FC<Props> = ({ user, setUser }) => {
 
-    if (!user) {
+    if (user === true) return <></>;
+
+    if (!user || user.userType !== 'manager') {
         return <Navigate to='/'/>;
     }
-
-    if (user === true) return <></>;
 
     return (
         <div className='manager-page'>

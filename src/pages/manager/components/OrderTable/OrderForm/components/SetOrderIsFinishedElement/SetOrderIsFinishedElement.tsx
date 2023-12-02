@@ -2,7 +2,7 @@ import React from 'react';
 import { setOrderIsFinished } from '../../../../../../../API/orders';
 
 type Props = {
-    user: ExistingManager
+    user: Manager
     order: Order
     updateOrders: () => void
     items: OrderItem[]

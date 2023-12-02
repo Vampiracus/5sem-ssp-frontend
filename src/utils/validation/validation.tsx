@@ -13,6 +13,19 @@ export function validateName(n: string) {
     return true;
 }
 
+export function validateNameNoDots(n: string) {
+    const regexp = /^[A-Za-zА-ЯЁа-яё0-9 \-\\']+$/;
+    if (!n.match(regexp)) return 'Разрешены русские и латинские буквы, цифры, тире';
+    return true;
+}
+
+export function validatePhone(n: string) {
+    if (n === '-') return true;
+    const regexp = /^(\+7|8|7)[0-9]{10}$/;
+    if (!n.match(regexp)) return 'Введите прочерк или телефон в формате +78000000000';
+    return true;
+}
+
 export function validateLatinDigits(n: string) {
     const regexp = /^[A-Za-z0-9\-_]+$/;
     if (!n.match(regexp)) return 'Разрешены русские и латинские буквы, цифры и тире';

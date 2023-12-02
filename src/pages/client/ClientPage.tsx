@@ -28,10 +28,10 @@ const ClientPage: React.FC<Props> = ({ user, setUser }) => {
         setIsOrderSelected(false);
     }, [createdOrders]);
 
-    if (!user) {
+    if (!user || user !== true && user.userType !== 'client') {
         return <Navigate to='/'/>;
     }
-
+    
     return (
         <Container outerClass='client-page__outer' class='client-page'>
             <ClientHeader

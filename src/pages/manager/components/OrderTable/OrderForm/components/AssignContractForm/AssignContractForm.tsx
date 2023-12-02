@@ -9,7 +9,7 @@ import {
 import './AssignContractForm.scss';
 
 type Props = {
-    user: ExistingManager
+    user: Manager
     order: Order
     updateOrders: () => void
 }

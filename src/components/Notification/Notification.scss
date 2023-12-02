@@ -1,0 +1,42 @@
+@use '../../colors.scss';
+
+.notification {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    width: 150px;
+    background-color: colors.$info-primary;
+    padding: 5px;
+    border-radius: 7px;
+    
+    animation-name: appear;
+    animation-duration: 4.1s;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: colors.$info-primary-hover;
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        right: -150px;
+    }
+
+    25% {
+        opacity: 1;
+        right: 5px;
+    }
+
+    75% {
+        opacity: 1;
+        right: 5px;
+    }
+  
+    to {
+        opacity: 0;
+        right: -150px;
+    }
+}

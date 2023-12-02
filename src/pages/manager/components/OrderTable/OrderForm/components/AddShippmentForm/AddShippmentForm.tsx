@@ -9,7 +9,7 @@ import './AddShippmentForm.scss';
 import { postShipment } from '../../../../../../../API/shipments';
 
 type Props = {
-    user: ExistingManager
+    user: Manager
     order: Order
     updateOrders: () => void
 }

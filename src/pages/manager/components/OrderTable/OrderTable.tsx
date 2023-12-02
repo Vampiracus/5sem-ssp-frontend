@@ -5,9 +5,7 @@ import TableItem from '../../../../components/TableItem/TableItem';
 import { getAllOrders } from '../../../../API/orders';
 import OrderForm from './OrderForm/OrderForm';
 
-
-
-const OrderTable: React.FC<{ user: ExistingManager }> = ({ user }) => {
+const OrderTable: React.FC<{ user: Manager }> = ({ user }) => {
     const [orders, setOrders] = React.useState<Order[]>([]);
     const [selectedOrder, setSelectedOrder] = React.useState<null | Order>(null);
     const [isOrderSelected, setIsOrderSelected] = React.useState<boolean>(false);

@@ -1,7 +1,11 @@
-.authorization {
+.authorization, .registration {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.registration .validated-input {
+    min-width: 400px;
 }
 
 .welcome-page {

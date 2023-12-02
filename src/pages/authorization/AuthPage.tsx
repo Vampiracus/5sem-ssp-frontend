@@ -8,6 +8,7 @@ import Input from '../../components/Input/Input';
 import { validationStub } from '../../utils/validation/validation';
 import { loginClientURL, loginManagerURL } from '../../API/endpoints';
 import { login as doLogin, getCurrentUser } from '../../API/user';
+import { Link } from 'react-router-dom';
 
 type Props = {
     isForClient: boolean
@@ -79,6 +80,15 @@ const AuthPage: React.FC<Props> = ({ isForClient, user, setUser }) => {
                     placeholder='Пароль'
                 />
                 <Button onClick={signin}>Войти!</Button>
+                {
+                    isForClient 
+                    ? (
+                    <Link to='/signup' style={{ textAlign: 'center' }}>
+                        <span className='span-link'> Зарегистрироваться </span>
+                    </Link>
+                    )
+                    : ''
+                }
             </form>
         </Container>
     );

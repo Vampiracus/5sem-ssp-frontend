@@ -17,7 +17,7 @@ type Props = {
     active: boolean
     setActive: (a: boolean) => void
     updateOrders: () => void
-    user: ExistingManager
+    user: Manager
 }
 
 const OrderForm: React.FC<Props> = ({ order, active, setActive, updateOrders, user }) => {
