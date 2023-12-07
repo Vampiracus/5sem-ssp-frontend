@@ -4,6 +4,7 @@ import { validatePositiveNumber } from '../../../../../../utils/validation/valid
 import Button from '../../../../../../components/Button/Button';
 import './../../../../../../components/NewItemForm/NewItemForm.scss';
 import { postOrderItem, sendOrder as sendOrderAPI } from '../../../../../../API/orders';
+import Notification from '../../../../../../components/Notification/Notification';
 
 type Props = {
     order_id: number,
@@ -17,7 +18,9 @@ const NewItemForm: React.FC<Props> = ({ order_id, setCreatedNewItems, createdNew
     const [productId, setProductId] = React.useState('');
     const [productNumber, setProductNumber] = React.useState('');
     const [isProductIdIncorrect, setIsProductIdIncorrect] = React.useState(false);
+    const [notText, setNotText] = React.useState('');
     
+
     const addNewItem: React.MouseEventHandler<HTMLButtonElement> = e => {
         e.preventDefault();
         setProductId('');
@@ -26,6 +29,7 @@ const NewItemForm: React.FC<Props> = ({ order_id, setCreatedNewItems, createdNew
             .then(res => {
                 if (res !== 'OK') {
                     setIsProductIdIncorrect(true);
+                    setNotText(res);
                 } else {
                     setIsProductIdIncorrect(false);
                     setCreatedNewItems(createdNewItems + 1);
@@ -39,12 +43,15 @@ const NewItemForm: React.FC<Props> = ({ order_id, setCreatedNewItems, createdNew
             .then(res => {
                 if (res === 'OK') {
                     updateOrders();
+                } else {
+                    setNotText(res);
                 }
             });
     };
 
     return (
         <form className='new-item-form'>
+            <Notification text={notText} setText={setNotText} />
             <Input
                 prefix='new-order-item'
                 name='product_id'
@@ -63,13 +70,16 @@ const NewItemForm: React.FC<Props> = ({ order_id, setCreatedNewItems, createdNew
                 validationFunction={validatePositiveNumber}
                 placeholder='Количество товара'
                 maxLength={7}
+                isIncorrect={isProductIdIncorrect}
+                setIsIncorrect={setIsProductIdIncorrect}
             /> 
             <Button
                 className='order-form__new-item-button'
                 onClick={addNewItem}>Добавить новый товар</Button>
             <Button
                 className='order-form__send-button'
-                onClick={sendOrder}>Отправить заказ</Button>
+                onClick={sendOrder}
+                type='button'>Отправить заказ</Button>
         </form>
     );
 };

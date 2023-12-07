@@ -7,6 +7,7 @@ import {
 } from '../../../../../../../utils/validation/validation';
 import './AddShippmentForm.scss';
 import { postShipment } from '../../../../../../../API/shipments';
+import Notification from '../../../../../../../components/Notification/Notification';
 
 type Props = {
     user: Manager
@@ -19,6 +20,9 @@ const AddShippmentForm: React.FC<Props> = ({ order, updateOrders, user }) => {
     const [date, setDate] = React.useState('');
     const [orderItemID, setOrderItemID] = React.useState('');
 
+    const [notificationText, setNotificationText] = React.useState('');
+    
+
     if (order.status !== 'Готов' || order.manager_login !== user.login)
         return <></>;
 
@@ -28,6 +32,8 @@ const AddShippmentForm: React.FC<Props> = ({ order, updateOrders, user }) => {
             .then(res => {
                 if (res === 'OK') {
                     updateOrders();
+                } else {
+                    setNotificationText(res);
                 }
             })
             .catch(err => alert(err));
@@ -36,6 +42,7 @@ const AddShippmentForm: React.FC<Props> = ({ order, updateOrders, user }) => {
     return (
         <>
             <div>
+                <Notification text={notificationText} setText={setNotificationText} />
                 <span>Добавить отгрузку по заказу:</span>
                 <form className='add-shipment-form'>
                     <Input

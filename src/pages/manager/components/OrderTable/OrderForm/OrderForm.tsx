@@ -16,7 +16,7 @@ type Props = {
     order: Order | null
     active: boolean
     setActive: (a: boolean) => void
-    updateOrders: () => void
+    updateOrders: (txt?: string) => void
     user: Manager
 }
 
@@ -48,6 +48,11 @@ const OrderForm: React.FC<Props> = ({ order, active, setActive, updateOrders, us
                     updateOrders={updateOrders}
                     user={user}
                     items={items}/>
+                <SetOrderIsSignedElement 
+                    order={order} 
+                    updateOrders={updateOrders}
+                    user={user}
+                    hasShipments/>
                 <p>Содержание заказа:</p>
                 <TableItem item={{
                     id: 'ID строки заказа',

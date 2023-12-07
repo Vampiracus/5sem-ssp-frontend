@@ -2,12 +2,15 @@
 
 .table-item {
     display: flex;
-    border: 1px solid colors.$primary-active;
-    background-color: colors.$primary;
+    align-items: stretch;
+    border: 2px solid colors.$secondary-active;
+    background-color: colors.$secondary-background;
+    color: colors.$secondary-text;
+    padding: 0;
 
     &__micro {
         padding: 5px;
-        border-right: 2px solid colors.$primary-active;
+        border-right: 4px solid colors.$secondary-active;
         flex: 1;
         text-align: center;
         display: flex;
@@ -18,6 +21,8 @@
         }
 
         &__delete-button {
+            padding: 0;
+            border: 0;
             width: 1.7rem;
             height: 1.7rem;
             border-radius: 50%;
@@ -51,10 +56,13 @@
     }
 
     &_first {
-        background-color: colors.$primary-hover;
+        background-color: colors.$secondary-active;
         cursor: default;
         border-top-right-radius: 8px;
-        border-top-left-radius: 8px;
+        border-top-left-radius: 8px;    
+        &:hover {
+            background-color: colors.$secondary-active !important;
+        }
     }
     &_last {
         border-bottom-right-radius: 8px;
@@ -64,9 +72,9 @@
     cursor: pointer;
 
     &:hover {
-        background-color: colors.$primary-hover;
+        background-color: colors.$secondary-hover;
     }
     &:active {
-        background-color: colors.$primary-active;
+        background-color: colors.$secondary-active;
     }
 }

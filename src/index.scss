@@ -21,8 +21,7 @@ body {
 }
 
 h3, p, span {
-    // color: colors.$primary;
-    color: colors.$primary-text;
+    color: colors.$secondary-text;
     font-weight: 500;
 }
 
@@ -38,7 +37,7 @@ a, button {
 
 .span-link {
     text-decoration: underline;
-    color: colors.$info-primary-text;
+    color: colors.$info-primary;
     cursor: pointer;
 }
 

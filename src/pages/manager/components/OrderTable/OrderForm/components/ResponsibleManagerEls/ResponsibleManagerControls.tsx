@@ -4,13 +4,16 @@ import { blockOrder, unblockOrder } from '../../../../../../../API/orders';
 type Props = {
     user: Manager
     order: Order
-    updateOrders: () => void
+    updateOrders: (r?: string) => void
 }
 
 const ResponsibleManagerControls: React.FC<Props> = ({ order, updateOrders, user }) => {
     const block: React.MouseEventHandler<HTMLButtonElement> = () => {
         blockOrder(order.id)
-            .then(() => updateOrders());
+            .then(res => {
+                if (res === 'OK') updateOrders();
+                else updateOrders(res);
+            });
     };
 
     const unblock: React.MouseEventHandler<HTMLButtonElement> = () => {

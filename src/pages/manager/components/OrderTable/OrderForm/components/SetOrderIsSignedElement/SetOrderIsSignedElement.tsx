@@ -5,11 +5,14 @@ type Props = {
     order: Order
     updateOrders: () => void
     user: Manager
+    hasShipments?: true
 }
 
-const SetOrderIsSignedElement: React.FC<Props> = ({ order, updateOrders, user }) => {
+const SetOrderIsSignedElement: React.FC<Props> = ({ order, updateOrders, user, hasShipments }) => {
 
-    if (order.status !== 'Ожидается подпись контракта' || user.login !== order.manager_login)
+    if (!((order.status === 'Ожидается подпись контракта' && !hasShipments)
+        || order.status === 'Готов' && hasShipments)
+        || user.login !== order.manager_login)
         return <></>;
 
     const setSigned: React.MouseEventHandler<HTMLButtonElement> = e => {
@@ -23,7 +26,11 @@ const SetOrderIsSignedElement: React.FC<Props> = ({ order, updateOrders, user })
     return (
         <p>
             <span className='span-link' onClick={setSigned}>
-                Поставить отметку о том, что клиент подписал контракт
+                {
+                    !hasShipments
+                    ? 'Поставить отметку о том, что клиент подписал контракт'
+                    : 'Поставить отметку, что заказ в обработке'
+                }
             </span>
         </p>
     );

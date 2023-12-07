@@ -9,9 +9,9 @@ const WelcomePage: React.FC<{user: User | null | true}> = ({ user }) => {
     return (
         <Container class='welcome-page'>
             <p>
-                Добро пожаловать на сайт компании "Стулы и столья"!
+                Добро пожаловать на сайт завода "Прогресс"!
             </p>
-            <span>Пожалуйста, представьтесь</span>
+            <span>Чтобы совершить заказ, пожалуйста, представьтесь</span>
             <div className='welcome-page__to-auth-buttons'>
                 <Link to='/login/client'>
                     <Button className='welcome-page__to-auth-buttons__button'>Клиент</Button>
@@ -20,6 +20,10 @@ const WelcomePage: React.FC<{user: User | null | true}> = ({ user }) => {
                     <Button className='welcome-page__to-auth-buttons__button'>Менеджер</Button>
                 </Link>
             </div>
+            
+            <Link to='/products' style={{ textAlign: 'center' }}>
+                <span className='span-link'>Посмотреть ассортимент товаров</span>
+            </Link>
         </Container>
     );
 };

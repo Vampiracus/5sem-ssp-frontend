@@ -19,7 +19,7 @@ const ClientHeader: React.FC<Props> = ({ login, setCreatedOrders, orders }) => {
                     postOrder(login)
                         .then(() => setCreatedOrders(orders + 1));
                 }}
-            >Добавить новый</Button>
+            >Добавить новый заказ</Button>
         </div>
     );
 };

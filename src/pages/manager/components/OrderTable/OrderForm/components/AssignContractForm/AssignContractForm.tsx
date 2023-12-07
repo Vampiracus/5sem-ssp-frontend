@@ -7,6 +7,7 @@ import {
     rejectOrder as rejectOrderAPI
 } from '../../../../../../../API/orders';
 import './AssignContractForm.scss';
+import Notification from '../../../../../../../components/Notification/Notification';
 
 type Props = {
     user: Manager
@@ -18,6 +19,7 @@ const AssignContractForm: React.FC<Props> = ({ order, updateOrders, user }) => {
     const [contract, setContract] = React.useState('');
     const [contract_date, setContract_date] = React.useState('');
     const [isProductIdIncorrect, setIsProductIdIncorrect] = React.useState(false);
+    const [notText, setNotText] = React.useState('');
 
     if (order.status !== 'Ожидается создание контракта' || order.manager_login !== user.login)
         return <></>;
@@ -28,6 +30,8 @@ const AssignContractForm: React.FC<Props> = ({ order, updateOrders, user }) => {
             .then(res => {
                 if (res === 'OK') {
                     updateOrders();
+                } else {
+                    setNotText('Что-то пошло не так');
                 }
             });
     };
@@ -41,6 +45,7 @@ const AssignContractForm: React.FC<Props> = ({ order, updateOrders, user }) => {
     return (
         <>
             <div>
+                <Notification text={notText} setText={setNotText} />
                 <span>Добавить контракт к заказу:</span>
                 <form className='add-contract-form'>
                     <Input

@@ -1,51 +1,24 @@
-$primary: #ffdd2d;
-$primary-hover: #ffcd33;
-$primary-active: #fab619;
+$primary: #3578e5;
+$primary-hover: #306cce;
+$primary-active: #2d66c3;
+$primary-text: #ebedf0;
+$primary-background: #fff;
 
-$primary-text: #333;
-$primary-background: #444;
+$secondary-background: #eef0f2;
+$secondary-hover: #f5f6f8;
+$secondary-active: #fff;
+$secondary-text: #525860;
 
-$secondary-background: #555;
-
-$error-primary: #c22;
-$error-primary-hover: #cc2f2f;
-$error-primary-active: #dc2f2f;
-$error-primary-text: $primary-text;
-
-$info-primary: #29c;
-$info-primary-hover: #18b;
-$info-primary-active: #3ac;
-
-
-// $primary: #888;
-// $primary-hover: #999;
-// $primary-active: #777;
-// $primary-text: #fff;
-
-// $info-primary: #777;
-// $info-primary-hover: #666;
-// $info-primary-active: #999;
-
-// $error-primary: #a44;
-// $error-primary-hover: #b33;
-
-// ::placeholder {
-//     color: #ccc;
-// }
-
-
-$primary: #ffb800;
-$primary-hover: #ffca40;
-$primary-active: #a67800;
-$primary-text: #444;
-$primary-background: #ffd873;
-$secondary-background: #bf9730;
-
-$info-primary: #FF7F00;
-$info-primary-text: #A65200;
-$info-primary-hover: #FF9F40;
+$info-primary: #02afef;
+$info-primary-text: #dcd;
+$info-primary-hover: #019ede;
 $info-primary-active: $info-primary-hover;
 
-$error-primary: #ff2c00;
-$error-primary-text: #A61D00;
+$error-primary: #fa383e;
+$error-primary-text: $primary-text;
+$error-primary-active: #010101;
 $error-primary-hover: #FF6140;
+
+::placeholder {
+    color: $info-primary-text;
+}

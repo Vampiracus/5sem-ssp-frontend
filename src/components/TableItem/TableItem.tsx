@@ -36,7 +36,7 @@ const TableItem: React.FC<Props> = ({
 
     if (!item) return <></>;
 
-    const eraser: React.MouseEventHandler<HTMLDivElement> = e => {
+    const eraser: React.MouseEventHandler<HTMLButtonElement> = e => {
         e.stopPropagation();
         if (!wantDelete) {
             setWantDelete(true);
@@ -57,7 +57,7 @@ const TableItem: React.FC<Props> = ({
     };
 
     return (
-        <div 
+        <button 
             className={'table-item ' 
                 + (isLast && 'table-item_last ' || '')
                 + (isFirst && 'table-item_first ' || '')}
@@ -65,7 +65,8 @@ const TableItem: React.FC<Props> = ({
                 if (!setIsItemSelected) throw new Error('TableItem misused');
                 setSelectedItem(item);
                 setIsItemSelected(true);
-            } : () => {}}>
+            } : () => {}}
+        >
             
             {Object.keys(item).map(key => (
                 <div className='table-item__micro' key={key}>{item[key]}</div>
@@ -75,15 +76,15 @@ const TableItem: React.FC<Props> = ({
                     isFirst
                         ? 'Удалить'
                         : deleteFunction
-                            ? <div 
+                            ? <button 
                                 title='Нажмите дважды, чтобы удалить'
                                 // eslint-disable-next-line max-len
                                 className={'table-item__micro__delete-button' + (wantDelete && ' table-item__micro__delete-button_want-delete' || '')}
-                                onClick={eraser}>X</div>
+                                onClick={eraser}>X</button>
                             : ''
                 }
             </div>
-        </div>
+        </button>
     );
 };
 

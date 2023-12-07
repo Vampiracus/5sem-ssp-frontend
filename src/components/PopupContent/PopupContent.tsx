@@ -9,7 +9,7 @@ type Props = {
 
 // eslint-disable-next-line max-len
 const PopupContent: React.FC<React.PropsWithChildren<Props>> = ({ active, children, setActive }) => {
-    const clickHandler: React.MouseEventHandler<HTMLDivElement> = React.useCallback(e => {
+    const clickHandler = React.useCallback((e: React.MouseEvent | KeyboardEvent) => {
         //@ts-expect-error firstElementChild IS in e.target!
         if (e.target.firstElementChild?.classList.contains('popup-content__content'))
             setActive(false);
@@ -21,7 +21,7 @@ const PopupContent: React.FC<React.PropsWithChildren<Props>> = ({ active, childr
             onClick={clickHandler}
         >
             <div className={'popup-content__content'}>
-                <CloseButton onClick={setActive.bind({}, false)}/>
+                <CloseButton closeFunc={setActive.bind({}, false)}/>
                 {children}
             </div>
         </div>

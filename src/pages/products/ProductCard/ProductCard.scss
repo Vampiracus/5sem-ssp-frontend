@@ -1,0 +1,26 @@
+@use '../../../colors.scss';
+
+.grid-card {
+    width: 160px;
+    height: 110px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: colors.$primary;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    & > span {
+        color: inherit;
+    }
+
+    &__name {
+        align-self: center;
+    }
+
+    &__description {
+        display: flex;
+        justify-content: space-around;
+    }
+}

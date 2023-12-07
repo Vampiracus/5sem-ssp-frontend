@@ -4,13 +4,26 @@ import Container from '../../../../components/Container/Container';
 import TableItem from '../../../../components/TableItem/TableItem';
 import { getAllOrders } from '../../../../API/orders';
 import OrderForm from './OrderForm/OrderForm';
+import Notification from '../../../../components/Notification/Notification';
 
 const OrderTable: React.FC<{ user: Manager }> = ({ user }) => {
     const [orders, setOrders] = React.useState<Order[]>([]);
     const [selectedOrder, setSelectedOrder] = React.useState<null | Order>(null);
     const [isOrderSelected, setIsOrderSelected] = React.useState<boolean>(false);
     const [ordesUpdated, setOrdersUpdated] = React.useState<number>(0);
-    const updateOrders = () => setOrdersUpdated(ordesUpdated + 1);
+    const [notText, setNotText] = React.useState('');
+
+    //correct
+    const updateOrders = (txt?: string) => {
+        setOrdersUpdated(ordesUpdated + 1);
+        if (txt) setNotText(txt);
+    };
+
+    //incorrect
+    // const updateOrders = (txt?: string) => {
+    //     setSelectedOrder(selectedOrder && { ...selectedOrder, manager_login: user.login });
+    //     if (txt) setNotText(txt);
+    // };
     
     const [noCotract, setNoCotract] = React.useState(false);
     
@@ -25,6 +38,7 @@ const OrderTable: React.FC<{ user: Manager }> = ({ user }) => {
 
     return (
         <Container outerClass='order-table__outer' class='order-table'>
+            <Notification text={notText} setText={setNotText}/>
             <h3>Заказы</h3>
             <TableItem item={{
                 id: 'ID заказа',
@@ -38,7 +52,7 @@ const OrderTable: React.FC<{ user: Manager }> = ({ user }) => {
             {
                 orders.map((order, index) => {
                     const item = { ...order };
-                    if (item.contract === null) item.contract = 'NO';
+                    if (item.contract === null) item.contract = 'Нет контракта';
                     item.contract_date
                     = item.contract_date ? (new Date(item.contract_date)).toLocaleDateString() : '';
                     return (

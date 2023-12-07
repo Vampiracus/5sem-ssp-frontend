@@ -1,6 +1,8 @@
 @use '../../../../../colors.scss';
 
 .manager-order-form {
+    display: flex;
+    flex-direction: column;
     border-radius: 8px;
 
     & > .new-item-form {

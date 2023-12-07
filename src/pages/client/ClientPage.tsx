@@ -9,6 +9,7 @@ import ClientHeader from './components/ClientHeader/ClientHeader';
 import OrderForm from './components/orderForm/OrderForm';
 import Button from '../../components/Button/Button';
 import { logout } from '../../API/user';
+import { Link } from 'react-router-dom';
 
 type Props = {
     user: User | null | true
@@ -52,6 +53,9 @@ const ClientPage: React.FC<Props> = ({ user, setUser }) => {
                     setCreatedOrders(createdOrders + 1);
                 }}
             />
+            <Link to='/products'>
+                <span className='span-link'>Посмотреть ассортимент товаров</span>
+            </Link>
             <Button className='client-page__logout-button' onClick={() => {
                 logout()
                     .then(() => setUser(null));

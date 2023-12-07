@@ -15,7 +15,7 @@ import Notification from '../../components/Notification/Notification';
 import { postClient } from '../../API/clients';
 import { Link } from 'react-router-dom';
 
-const RegPage = () => {
+const RegPage: React.FC<{ user: User | null | true }> = ({ user }) => {
     const [login, setLogin] = React.useState('');
     const [name, setName] = React.useState('');
     const [phone, setPhone] = React.useState('');
@@ -39,6 +39,12 @@ const RegPage = () => {
     };
     
     if (redirected) return <Navigate to='/login/client' />;
+    
+    if (user && user !== true) {
+        return (
+            <Navigate to={'/' + user.userType}/>
+        );
+    }
 
     return (
         <Container>

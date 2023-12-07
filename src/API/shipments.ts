@@ -7,7 +7,6 @@ export async function getAllShipments(): Promise<Shipment[]> {
         const result = await res.json() as Shipment[];
         return result.map(shipment => {
             const date = (new Date(shipment.date)).toLocaleDateString();
-            console.log(date);
             return { 
                 ...shipment,
                 date,

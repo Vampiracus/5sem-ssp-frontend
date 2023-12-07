@@ -2,12 +2,15 @@ import React from 'react';
 import './ProductsTable.scss';
 import Container from '../../../../components/Container/Container';
 import TableItem from '../../../../components/TableItem/TableItem';
-import { deleteProduct, getAllProducts } from '../../../../API/products';
+import { deleteProduct as deleteProductAPI, getAllProducts } from '../../../../API/products';
 import AddProductForm from './AddProductForm/AddProductForm';
+import Notification from '../../../../components/Notification/Notification';
+import ChangeProductForm from './ChangeProductForm/ChangeProductForm';
 
 const ProductsTable = () => {
     const [products, setProducts] = React.useState<Product[]>([]);
     const [createdProducts, setCreatedProducts] = React.useState(0);
+    const [notText, setNotText] = React.useState('');
     
     
     React.useEffect(() => {
@@ -15,8 +18,19 @@ const ProductsTable = () => {
             .then(res => setProducts(res));
     }, [createdProducts]);
 
+    const deleteProduct = async (item: Product) => {
+        try {
+            const res = await deleteProductAPI(item);
+            if (res === 'OK') return;
+            setNotText(res);
+        } catch(e) {
+            console.log(e);
+        }
+    };
+
     return (
         <Container outerClass='product-table__outer' class='product-table'>
+            <Notification text={notText} setText={setNotText} />
             <h3>Товары</h3>
             <div className='product-table__table'>
                 <TableItem item={{
@@ -40,7 +54,12 @@ const ProductsTable = () => {
                     })
                 }
             </div>
+            <br/>
             <AddProductForm
+                setCreatedNewItems={setCreatedProducts}
+                createdNewItems={createdProducts}/>
+            <br/>
+            <ChangeProductForm
                 setCreatedNewItems={setCreatedProducts}
                 createdNewItems={createdProducts}/>
         </Container >
