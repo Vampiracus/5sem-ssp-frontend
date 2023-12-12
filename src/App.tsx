@@ -22,6 +22,7 @@ function App() {
         let timeout = 0;
         const sessionCounter = () => {
             if (timeout) clearTimeout(timeout);
+            timeout = 0;
             if (user === null || user === true) return;
             timeout = setTimeout(() => {
                 logout();
@@ -37,6 +38,7 @@ function App() {
         return () => {
             window.removeEventListener('mousedown', sessionCounter);
             window.removeEventListener('keydown', sessionCounter);
+            if (timeout) clearTimeout(timeout);
         };
     }, [(user !== null) && (user !== true) && user.login ]);
 
